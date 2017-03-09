@@ -1,10 +1,25 @@
 package fileSearcher
 
+import java.io.File
+
 /**
-  * Created by shahzada.mansoor on 3/6/17.
+  * Created by shahzada.mansoor
   */
-class Matcher(filter: String, rootLocation:String) {
+class Matcher(filter: String, val rootLocation:String = new File(".").getCanonicalPath()) {
   val rootIOObject = FileConverter.convertToIOObject(new File(rootLocation))
+
+
+  def execute() = {
+    val matchedFiles = rootIOObject match {
+      case file: FileObject if FilterChecker(filter) matches file.name => List(file)
+      case directory: DirectoryObject =>
+        FilterChecker(filter) findMatchedFiles directory.children()
+      case _ => List
+    }
+    matchedFiles map(iOObject => iOObject.name)
+  }
+
+
 
 
 }

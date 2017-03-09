@@ -1,8 +1,10 @@
 /**
-  * Created by shahzada.mansoor on 2/20/17.
+  * Created by shahzada.mansoor
   */
 
 package fileSearcher
+
+import java.io.File
 
 import org.scalatest.FlatSpec
 
@@ -23,4 +25,6 @@ class FilterCheckerTests extends FlatSpec {
 
     assert(matchedFiles.length == 0)
   }
+
+
 }

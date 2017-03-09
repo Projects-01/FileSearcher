@@ -1,13 +1,12 @@
 package fileSearcher
 
-import javax.tools.FileObject
 import java.io.File
 
 /**
-  * Created by shahzada.mansoor on 3/6/17.
+  * Created by shahzada.mansoor
   */
 object FileConverter {
   def convertToIOObject(file: File) =
-    if(file.isDirecctory()) DirectoryObject(file)
+    if(file.isDirectory()) DirectoryObject(file)
     else FileObject(file)
 }
